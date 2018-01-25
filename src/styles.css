@@ -29,3 +29,11 @@ body{
   .fadeIn {
     animation-name: fadeIn;
   }
+
+  p{
+    text-align: justify;
+  }
+
+  .img-log{
+    width: 150px;
+  }

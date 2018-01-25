@@ -44,7 +44,7 @@ export class HeroesService {
           bio: "Tras ser mordido por una araña radiactiva, obtuvo los siguientes poderes sobrehumanos, una gran fuerza, agilidad, poder trepar por paredes. La fuerza de Spider-Man le permite levantar 10 toneladas o más. Gracias a esta gran fuerza Spider-Man puede realizar saltos íncreibles. Un \"sentido arácnido\", que le permite saber si un peligro se cierne sobre él, antes de que suceda. En ocasiones este puede llevar a Spider-Man al origen del peligro.",
           img: "assets/img/spiderman.png",
           aparicion: "1962-08-01",
-          casa: "Marvel"
+          casa: "DC"
         },
         {
           nombre: "Wolverine",
@@ -63,6 +63,29 @@ export class HeroesService {
 
     getHeroes():Heroe[]{
         return this.heroes;
+    }
+
+    getHeroe( i:string ){
+      return this.heroes[i];
+    }
+
+    buscarHeroeService( termino:string ):Heroe[]{
+
+      let heroesArr:Heroe[] = [];
+      termino = termino.toLowerCase();
+
+      for(let heroe of this.heroes){
+
+        let nombre = heroe.nombre.toLowerCase();
+
+        if(nombre.indexOf(termino) >= 0){
+          heroesArr.push(heroe)
+        }
+
+      }
+
+      return heroesArr;
+
     }
 
 }

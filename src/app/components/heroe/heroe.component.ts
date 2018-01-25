@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HeroesService } from '../../service/heroes.service';
+
+
 
 @Component({
   selector: 'app-heroe',
   templateUrl: './heroe.component.html',
   styleUrls: ['./heroe.component.css']
 })
-export class HeroeComponent implements OnInit {
+export class HeroeComponent{
 
-  constructor() { }
+  heroe:any = {};
 
-  ngOnInit() {
+  constructor(private active:ActivatedRoute, private service:HeroesService) {
+
+    this.active.params.subscribe(
+      params => {
+        this.heroe = this.service.getHeroe( params['id'] );
+      }
+    )
+
   }
 
 }
